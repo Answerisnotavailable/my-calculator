@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>訂單計算機</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="p-4">
+
+  <h2>訂單計算機</h2>
+
+  <ul class="nav nav-tabs mt-4" id="mainTabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="tab" href="#tab-main">訂單計算</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#tab-settings">商品設定</a>
+    </li>
+  </ul>
+
+  <div class="tab-content mt-3">
+    <!-- 訂單計算 -->
+    <div class="tab-pane fade show active" id="tab-main">
+      <button class="btn btn-secondary mb-3" onclick="addProductRow()">新增商品</button>
+      <div id="product-blocks" class="row"></div>
+      <div class="mt-4">
+        <button class="btn btn-primary" onclick="calculateTotal()">計算總價</button>
+      </div>
+      <div id="result-table" class="mt-4"></div>
+    </div>
+
+    <!-- 商品設定 -->
+    <div class="tab-pane fade" id="tab-settings">
+      <div id="import-alert-placeholder"></div>
+      <form id="product-form" class="mb-4">
+        <div class="row g-2">
+          <div class="col-md-2">
+            <input type="text" id="category" class="form-control" placeholder="分類 (如 水果)">
+          </div>
+          <div class="col-md-3">
+            <input type="text" id="product-name" class="form-control" placeholder="商品名稱">
+          </div>
+          <div class="col-md-2">
+            <input type="text" id="unit" class="form-control" placeholder="單位 (如 斤)">
+          </div>
+          <div class="col-md-2">
+            <input type="number" id="price" class="form-control" placeholder="單價">
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-success w-100" type="submit">新增商品</button>
+          </div>
+        </div>
+      </form>
+      <hr class="my-4">
+      <div id="settings-table" class="mb-4"></div>
+      <hr class="my-4">
+      <div class="mb-3">
+        <input type="file" id="upload" class="form-control mb-2">
+        <button class="btn btn-outline-primary" onclick="downloadProducts()">匯出商品設定</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="js/config.js"></script>
+  <script src="js/order.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    loadProducts(); // 初始載入
+  </script>
+</body>
+</html>
